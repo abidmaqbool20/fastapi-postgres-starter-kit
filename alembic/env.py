@@ -12,7 +12,13 @@ load_dotenv()
 
 from app.config.main import settings
 from app.config.database import Base
-from app.models.user import User  # import all models
+
+
+from app.models.user import User
+from app.models.role import Role
+from app.models.engine_request import EngineRequest
+from app.models.user_role import UserRole
+
 
 config = context.config
 fileConfig(config.config_file_name)

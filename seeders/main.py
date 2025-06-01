@@ -7,12 +7,20 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from app.config.database import engine
 from seeders.users import seed_users
+from seeders.roles import seed_roles
+from seeders.engine_request_seeder import seed_engine_requests
+from seeders.user_role_seeder import seed_user_roles
 
 def run_all_seeders(db: Session):
-    print("🚀 Running seeders...")
-    seed_users(db)
-    print("🎉 Seeding complete.")
-
+    try:
+        print("🚀 Running seeders...")
+        seed_users(db)
+        seed_roles(db)
+        seed_engine_requests(db)
+        seed_user_roles(db)
+        print("🎉 Seeding complete.")
+    finally:
+        db.close()
 def main():
     with Session(engine) as session:
         run_all_seeders(session)

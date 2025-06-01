@@ -8,8 +8,9 @@ from app.utils.security import hash_password
 def seed_users(db: Session):
     if db.query(User).count() == 0:
         users = [
-            User(name="Admin User", email="admin@example.com", password=hash_password("admin123")),
-            User(name="Normal User", email="user@example.com", password=hash_password("user123")),
+            User(name="Admin", email="admin@demo.com", password=hash_password("12345")),
+            User(name="User", email="user@demo.com", password=hash_password("12345")),
+            User(name="Member", email="member@demo.com", password=hash_password("12345")),
         ]
         db.add_all(users)
         db.commit()

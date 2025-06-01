@@ -3,7 +3,9 @@ from app.config.database import Base, engine
 import os
 
 from app.exceptions.handlers import load_exception_handlers 
-from app.api.routes import load_routes 
+from app.api.routes import load_routes, add_rate_limiter
+
+
 
 app = FastAPI(title="My FastAPI App")
 
@@ -16,6 +18,7 @@ if os.getenv("APP_ENV") == "development":
 
 # Register routes
 load_routes(app)
+add_rate_limiter(app)
 
 
 # Load exception handlers
