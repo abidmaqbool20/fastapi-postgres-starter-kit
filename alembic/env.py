@@ -16,7 +16,6 @@ from app.config.database import Base
 
 from app.models.user import User
 from app.models.role import Role
-from app.models.engine_request import EngineRequest
 from app.models.user_role import UserRole
 
 
